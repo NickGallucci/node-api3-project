@@ -12,7 +12,7 @@ router.get("/", (req, res) => {
     .catch(err => res.status(404).json({ message: "could not find posts" }));
 });
 
-router.get("/:id", validatePostId(), (req, res) => {
+router.get("/:id", validatePostId, (req, res) => {
   posts
     .getById(req.params.id)
     .then(data => res.json(data))
@@ -21,7 +21,8 @@ router.get("/:id", validatePostId(), (req, res) => {
     );
 });
 
-router.delete("/:id", validatePostId(), (req, res) => {
+
+router.delete("/:id", validatePostId, (req, res) => {
   posts
     .remove(req.params.id)
     .then(count => {
@@ -30,7 +31,7 @@ router.delete("/:id", validatePostId(), (req, res) => {
     .catch(err => res.status(404).json({ message: "could not delete post" }));
 });
 
-router.put("/:id", validatePostId(), (req, res) => {
+router.put("/:id", validatePostId, (req, res) => {
   posts
     .update(req.params.id, req.text)
     .then(data => res.json(data))
@@ -66,7 +67,7 @@ function validatePost() {
     if (!req.body.text) {
       return res.status(404).json({ message: "missing post data" });
     } else {
-      req.text = resource;
+      // req.text = resource;
       next();
     }
   };

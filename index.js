@@ -8,7 +8,7 @@ server.use(logger());
 
 server.use(express.json());
 
-const host = process.env.HOST || "0.0.0.0";
+const host = process.env.HOST || "http://127.0.0.1";
 const port = process.env.PORT || 4000;
 
 server.use("/", welcomeRouter);
