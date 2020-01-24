@@ -15,5 +15,5 @@ server.use("/", welcomeRouter);
 server.use("/users", userRouter);
 
 server.listen(port, () => {
-    console.log(`/n*** Server is listening on ${host}:${port}`);
+    console.log(`\n*** Server is listening on ${host}:${port}`);
 })
